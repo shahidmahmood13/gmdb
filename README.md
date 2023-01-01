@@ -2,7 +2,7 @@
 
 ## Background
 
-In week 2 we explored a variety of Java language features that are necessary in order to produce a robust, maintainable and functional application.
+Last week we took a look at the basics that are necessary to get a Spring Boot based service up and running.
 
 This week we'll turn our attention to building a up a Microservice Chassis that considers the various cross cutting concerns that are important to ensuring that the applications non-functional requirements are managed as well.
 
@@ -13,7 +13,7 @@ This week we'll turn our attention to building a up a Microservice Chassis that 
 As you can see above, the chassis in this repo contains support for the following concerns:
   * Support for restful web services. 
   * Support for Spring Security
-  * Support for persistance with JPA and PostGresQL (using a relational db because Flyway doesn't work with Cassandra)
+  * Support for persistance with JPA and PostGresQL
   * Support for Spring Actuator
   * Support for Asynchronous Calls using RabbitMQ
   * Support for Code Migration with Flyway
