@@ -1,4 +1,4 @@
-package com.galvanize.gmdb.gmdb;
+package com.galvanize.gmdb.gmdb.Controllers;
 
 import java.util.List;
 import java.util.Optional;
@@ -11,30 +11,32 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.galvanize.gmdb.gmdb.Model.Movie;
+import com.galvanize.gmdb.gmdb.Repo.MovieRepo;
  
 
 @RestController
 @RequestMapping("/movie")
 public class MovieController {
-  private  JdbcTemplate jdbc;
     @Autowired
-     private MovieRepo movieRepo;
+  private MovieRepo movieRepo;
+
   
     @PostMapping("/post")
     public void addMovie(@RequestBody Movie movie){
        movieRepo.save(movie);
     }
 
-    @GetMapping("/all")
+// 1st user story get all movies in list
+
+    @GetMapping("/getall")
     public List<Movie> getallMovies(){
         return movieRepo.findAll();
-
     }
 
-
-
-
-
-
+    // 2nd test case 
+    // @GetMapping("/{id}")
+    // public Mo
 
 }

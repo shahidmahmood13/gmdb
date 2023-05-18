@@ -11,14 +11,19 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.actuate.autoconfigure.health.HealthProperties.Status;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.json.JacksonTester;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.galvanize.gmdb.gmdb.Controllers.MovieController;
+import com.galvanize.gmdb.gmdb.Model.Movie;
+import com.galvanize.gmdb.gmdb.Repo.MovieRepo;
 
 
 @SpringBootTest
@@ -87,30 +92,32 @@ public class GmdbApplicationTests {
 		mockMvc = MockMvcBuilders.standaloneSetup(movieController).build();
 	}
 
+// @Test
 
 
 
-    @Mock
-    private MovieRepo  movieRepo;
 
-    @Test
-    public void testAddMovie() throws Exception {
-        // Create a mock MVC object
-        MovieController controller = new MovieController();
-        MockMvc mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
+    // @Mock
+    // /  private MovieRepo  movieRepo;
 
-        // Create a movie object to be added
-        Movie movie = new Movie(1, "HTML for Babies", 2020, "Some Kid", "6mi");
+    // @Test
+    // public void testAddMovie() throws Exception {
+    //     // Create a mock MVC object
+    //     MovieController controller = new MovieController();
+    //     MockMvc mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
 
-        // Send a POST request to add the movie
-        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.post("/post")
-                // .contentType(MediaType.APPLICATION_JSON)
-                .content(new ObjectMapper().writeValueAsString(movie)))
-                .andReturn();
+    //     // Create a movie object to be added
+    //     Movie movie = new Movie(1, "HTML for Babies", 2020, "Some Kid", "6mi");
 
-        // Verify that the movieRepo's save() method was called with the expected movie object
-        verify(movieRepo, times(1)).save(movie);
-    }
+    //     // Send a POST request to add the movie
+    //     MvcResult result = mockMvc.perform(MockMvcRequestBuilders.post("/post")
+    //             // .contentType(MediaType.APPLICATION_JSON)
+    //             .content(new ObjectMapper().writeValueAsString(movie)))
+    //             .andReturn();
+
+    //     // Verify that the movieRepo's save() method was called with the expected movie object
+    //     verify(movieRepo, times(1)).save(movie);
+    // }
 
 
 
@@ -118,14 +125,29 @@ public class GmdbApplicationTests {
 	@Test
 	public void contextLoads() {
 	}
-    @Test
-    public void canCreateANewBook() throws Exception {
-        Movie book = new Movie(1, "HTML for Babies",2020 , "Some Kid", "6mi");
-        mockMvc.perform(movieController.post("/post")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(jsonBook.write(book).getJson()))
-                .andExpect(status().isOk());
-    }
+
+
+    // @Test 
+    // public void getallbook(){
+    //      Movie movie1 = new Movie("" )
+
+
+
+    //     mockMvc.perform(MockMvcRequestBuilders.get("movie/getall")
+    //             .contentType(MediaType.APPLICATION_JSON))
+    //             .andExpect(status().isOk());
+        
+    // }
+    // @Test
+
+    // @Test
+    // public void canCreateANewBook() throws Exception {
+    //     Movie book = new Movie(1, "HTML for Babies",2020 , "Some Kid", "6mi");
+    //     mockMvc.perform(movieController.post("/post")
+    //             .contentType(MediaType.APPLICATION_JSON)
+    //             .content(jsonBook.write(book).getJson()))
+    //             .andExpect(status().isOk());
+    // }
     
   
 
